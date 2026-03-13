@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lezzet-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-s", "C:/Users/moali/OneDrive/TURKISH COFFEE/website", "-l", "3456"],
+      "port": 3456
+    }
+  ]
+}
