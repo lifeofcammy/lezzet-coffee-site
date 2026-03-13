@@ -137,3 +137,20 @@ window.addEventListener('resize', function() {
     }
   }
 });
+
+/* === Scroll Reveal === */
+document.addEventListener('DOMContentLoaded', function() {
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!revealEls.length) return;
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(function(el) { observer.observe(el); });
+});
