@@ -516,19 +516,12 @@ p {
 .particle-2 { bottom: 30%; left: 55%; animation-delay: 2s; animation-duration: 8s; }
 .particle-3 { bottom: 10%; left: 75%; animation-delay: 4s; animation-duration: 6s; }
 
-.hero-grid {
+.hero-centered {
   position: relative;
   z-index: 3;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: var(--space-8);
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
-}
-
-/* Text side */
-.hero-text {
+  max-width: 720px;
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
   animation: heroFadeUp 1s ease-out 0.3s both;
 }
 
@@ -632,36 +625,84 @@ p {
   flex-shrink: 0;
 }
 
-/* Product side */
-.hero-product {
-  display: flex;
+/* === Product Spotlight === */
+.product-spotlight {
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  background: var(--color-cream);
+}
+
+.product-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
   align-items: center;
+}
+
+.product-spotlight-img {
+  display: flex;
   justify-content: center;
-  position: relative;
-  animation: productReveal 1s ease-out 0.7s both;
 }
 
-.hero-product-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(198,168,77,0.2) 0%, rgba(176,115,64,0.1) 40%, transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: pulseGlow 4s ease-in-out infinite;
-}
-
-.hero-product-img {
-  max-width: 360px;
+.product-spotlight-img img {
+  max-width: 380px;
   width: 100%;
   height: auto;
-  animation: productFloat 5s ease-in-out infinite;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-spotlight-info .overline {
+  margin-bottom: var(--space-4);
+}
+
+.product-spotlight-info h2 {
+  font-size: var(--text-2xl);
+  line-height: 1.15;
+  margin-bottom: var(--space-6);
+}
+
+.product-spotlight-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-6);
+}
+
+.product-spotlight-list li {
   position: relative;
-  z-index: 2;
-  mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 55%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 55%, transparent 75%);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.product-spotlight-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--color-copper);
+  border-radius: 50%;
+}
+
+.product-spotlight-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.product-spotlight-amount {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-brown);
+}
+
+.product-spotlight-size {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
 }
 
 /* Scroll hint */
@@ -1361,43 +1402,30 @@ details .faq-answer {
 }
 
 @media (max-width: 900px) {
-  .hero-grid {
+  .product-spotlight-grid {
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: var(--space-20);
-    padding-bottom: var(--space-12);
+    gap: var(--space-8);
   }
 
-  .hero-text {
-    order: 1;
+  .product-spotlight-img {
+    order: -1;
   }
 
-  .hero-product {
-    order: 2;
-    margin-top: var(--space-8);
+  .product-spotlight-img img {
+    max-width: 280px;
   }
 
-  .hero-product-img {
-    max-width: 260px;
+  .product-spotlight-list li {
+    text-align: left;
   }
 
-  .hero-cinematic h1::after {
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-  }
-
-  .hero-sub {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-cta {
+  .product-spotlight-price {
     justify-content: center;
   }
 
-  .hero-badges {
-    justify-content: center;
+  .product-spotlight-info .btn {
+    width: 100%;
   }
 }
 
@@ -1468,10 +1496,6 @@ details .faq-answer {
     align-items: center;
   }
 
-  .hero-product-img {
-    max-width: 200px;
-  }
-
   .hero-cinematic {
     min-height: auto;
     padding: var(--space-8) 0;
@@ -1529,14 +1553,11 @@ details .faq-answer {
     transition: none;
   }
   .hero-bg-layer,
-  .hero-product-img,
-  .hero-product-glow,
   .hero-scroll-hint,
   .particle {
     animation: none;
   }
-  .hero-text,
-  .hero-product {
+  .hero-centered {
     animation: none;
     opacity: 1;
   }
