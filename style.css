@@ -2,9 +2,6 @@
    Lezzet Coffee — Brand Website Stylesheet
    ============================================================ */
 
-/* === Google Fonts === */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300..700&display=swap');
-
 /* === CSS Variables === */
 :root {
   /* Brand Colors */
@@ -179,7 +176,8 @@ p {
 
 /* Gold decorative line under section headings */
 .section .text-center h2::after,
-.cta-banner h2::after {
+.cta-banner h2::after,
+.fortune-teaser h2::after {
   content: '';
   display: block;
   width: 60px;
@@ -443,21 +441,6 @@ p {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes productFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
-}
-
-@keyframes productReveal {
-  0%   { opacity: 0; transform: translateY(60px) scale(0.9); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-  50%      { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
-}
-
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: 0.6; }
   50%      { transform: translateY(8px); opacity: 1; }
@@ -490,8 +473,8 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(26,14,6,0.88) 0%, rgba(26,14,6,0.55) 40%, rgba(26,14,6,0.75) 100%),
-    linear-gradient(to bottom, rgba(26,14,6,0.3) 0%, transparent 30%, transparent 70%, rgba(26,14,6,0.5) 100%);
+    linear-gradient(135deg, rgba(26,14,6,0.6) 0%, rgba(26,14,6,0.35) 40%, rgba(26,14,6,0.5) 100%),
+    linear-gradient(to bottom, rgba(26,14,6,0.2) 0%, transparent 30%, transparent 70%, rgba(26,14,6,0.4) 100%);
   z-index: 1;
 }
 
@@ -520,6 +503,8 @@ p {
   position: relative;
   z-index: 3;
   max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
   padding-top: var(--space-24);
   padding-bottom: var(--space-24);
   animation: heroFadeUp 1s ease-out 0.3s both;
@@ -539,6 +524,7 @@ p {
   letter-spacing: -0.02em;
   line-height: 1.05;
   margin-bottom: var(--space-6);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
 
 .hero-cinematic h1 em {
@@ -551,22 +537,23 @@ p {
   display: block;
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-gold), transparent);
-  margin-top: var(--space-6);
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: var(--space-6) auto 0;
 }
 
 .hero-sub {
   font-size: var(--text-base);
   color: rgba(245, 240, 232, 0.7);
   line-height: 1.7;
-  max-width: 440px;
-  margin-bottom: var(--space-8);
+  max-width: 480px;
+  margin: 0 auto var(--space-8);
 }
 
 .hero-cta {
   display: flex;
   gap: var(--space-4);
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: var(--space-10);
 }
 
@@ -601,6 +588,7 @@ p {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-badge {
@@ -626,9 +614,14 @@ p {
 }
 
 /* === Product Spotlight === */
+@keyframes productFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
 .product-spotlight {
   padding: clamp(5rem, 8vw, 8rem) 0;
-  background: var(--color-cream);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-surface) 100%);
 }
 
 .product-spotlight-grid {
@@ -648,7 +641,8 @@ p {
   width: 100%;
   height: auto;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 60px rgba(60,36,21,0.15), 0 8px 20px rgba(60,36,21,0.1);
+  animation: productFloat 4s ease-in-out infinite;
 }
 
 .product-spotlight-info .overline {
@@ -807,11 +801,18 @@ p {
 /* Feature cards */
 .card--feature {
   text-align: center;
+  border-top: 3px solid var(--color-gold);
+  position: relative;
 }
 
 .card--feature .card-icon-wrap {
   margin-left: auto;
   margin-right: auto;
+}
+
+.card--feature:hover .card-icon-wrap {
+  transform: scale(1.1);
+  transition: transform var(--transition-base);
 }
 
 /* === Steps (How It Works) === */
@@ -832,15 +833,22 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin: 0 auto var(--space-4);
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-6);
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-white);
-  background: var(--color-copper);
+  background: linear-gradient(135deg, var(--color-copper), var(--color-gold));
   border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--color-cream), 0 0 0 6px var(--color-gold);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.step:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--color-cream), 0 0 0 6px var(--color-copper), 0 8px 24px rgba(176,115,64,0.3);
 }
 
 .step h3 {
@@ -882,7 +890,7 @@ p {
   position: absolute;
   inset: 0;
   background: url('images/fortune-bg.jpg') center/cover no-repeat;
-  opacity: 0.25;
+  opacity: 0.35;
   pointer-events: none;
 }
 
@@ -930,17 +938,31 @@ p {
 .cta-banner {
   text-align: center;
   padding: clamp(5rem, 8vw, 8rem) 0;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-divider);
+  background: var(--color-brown);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(198,168,77,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .cta-banner h2 {
   margin-bottom: var(--space-3);
   font-size: var(--text-2xl);
+  color: var(--color-cream);
 }
 
 .cta-banner p {
-  color: var(--color-text-muted);
+  color: rgba(245, 240, 232, 0.7);
   max-width: 480px;
   margin: 0 auto var(--space-8);
   font-size: var(--text-lg);

@@ -37,7 +37,7 @@ function renderHeader(activePage, isSubpage) {
           <img src="${prefix}images/logo.png" alt="Lezzet Coffee" class="nav-logo-img">
           <div>
             <div class="nav-logo-text">Lezzet</div>
-            <div class="nav-logo-sub">Turkish Coffee</div>
+            <div class="nav-logo-sub">Specialty Turkish Coffee</div>
           </div>
         </a>
         <div class="nav-links">
