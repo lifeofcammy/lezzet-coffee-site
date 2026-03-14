@@ -34,6 +34,7 @@ function renderHeader(activePage, isSubpage) {
     <header class="site-header">
       <nav class="nav">
         <a href="${prefix}index.html" class="nav-logo">
+          <img src="${prefix}images/logo.png" alt="Lezzet Coffee" class="nav-logo-img">
           <div>
             <div class="nav-logo-text">Lezzet</div>
             <div class="nav-logo-sub">Turkish Coffee</div>
