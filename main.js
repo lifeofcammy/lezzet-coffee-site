@@ -28,7 +28,7 @@ function renderHeader(activePage, isSubpage) {
 
   const mobileLinks = navItems.map(item =>
     `<a href="${item.href}">${item.label}</a>`
-  ).join('') + `<a href="https://lezzetcoffee.com" class="nav-shop" style="text-align:center;margin-top:auto;">Shop Now</a>`;
+  ).join('') + `<a href="https://jminvw-uw.myshopify.com/products/lezzet-specialty-grade-turkish-coffee-classic-12-oz" class="nav-shop" style="text-align:center;margin-top:auto;">Shop Now</a>`;
 
   el.innerHTML = `
     <header class="site-header">
@@ -42,7 +42,7 @@ function renderHeader(activePage, isSubpage) {
         </a>
         <div class="nav-links">
           ${links}
-          <a href="https://lezzetcoffee.com" class="nav-shop">Shop Now</a>
+          <a href="https://jminvw-uw.myshopify.com/products/lezzet-specialty-grade-turkish-coffee-classic-12-oz" class="nav-shop">Shop Now</a>
         </div>
         <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
           <span></span>
