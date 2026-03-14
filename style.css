@@ -657,10 +657,11 @@ p {
   max-width: 360px;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 32px 60px rgba(0,0,0,0.5)) drop-shadow(0 8px 20px rgba(0,0,0,0.3));
   animation: productFloat 5s ease-in-out infinite;
   position: relative;
   z-index: 2;
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 55%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 55%, transparent 75%);
 }
 
 /* Scroll hint */
